@@ -21,6 +21,13 @@ export function Home() {
   const [entrieDescription, setEntrieDescription] = useState("")
   const [entrieValue, setEntrieValue] = useState(0)
 
+  const inputsRadios = document.querySelectorAll("input[name='entrieType']")
+
+  useEffect(() => {
+    const inputChecked = document.querySelector("input[name='entrieType']:checked").value
+    inputChecked === "entrada" ? setEntrieType(true) : setEntrieType(false)
+  }, [inputsRadios])
+
   return (
     <>
       <ContainerHeader>
@@ -32,11 +39,11 @@ export function Home() {
         <ContainerForm onSubmit={(e) => { e.preventDefault() }}>
           <div>
             <label>Descrição</label>
-            <input type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription}></input>
+            <input type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
           </div>
           <div>
             <label>Valor</label>
-            <input type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue}></input>
+            <input type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue} />
           </div>
           <div>
             <input onClick={() => { setEntrieType(true) }} type="radio" name="entrieType" value="entrada" defaultChecked />
