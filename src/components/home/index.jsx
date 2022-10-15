@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { EntriesContext } from "../../provider/EntriesProvider"
 
 import trashDark from '../../assets/icons/trash-dark.png'
@@ -9,12 +9,13 @@ import entrieLight from '../../assets/icons/entrie-light.png'
 import output from '../../assets/icons/output.png'
 import outputDark from '../../assets/icons/output-dark.png'
 import outputLight from '../../assets/icons/output-light.png'
+import { EntriesCard } from "../entriesCard"
+import { CardsStatistics } from "../CardsStatistics"
 
-
-import { ContainerMain, ContainerHeader, ContainerCardsControls, ContainerForm, ContainerEntries, ItemEntrie, WrapperTrash, HeaderEntries, CardEntrie } from "./style"
+import { ContainerMain, ContainerHeader, ContainerForm, ContainerEntries, HeaderEntries } from "./style"
 
 export function Home() {
-  const { entries, AddEntrie, IdFromEntrie, totalEntries } = useContext(EntriesContext)
+  const { AddEntrie, IdFromEntrie } = useContext(EntriesContext)
 
   const [entrieType, setEntrieType] = useState(null)
   const [entrieDescription, setEntrieDescription] = useState("")
@@ -27,12 +28,7 @@ export function Home() {
       </ContainerHeader>
 
       <ContainerMain>
-        <ContainerCardsControls>
-          <div>Entradas</div>
-          <div>Saídas</div>
-          <div>TOTAL R$ {totalEntries}</div>
-        </ContainerCardsControls>
-
+        <CardsStatistics />
         <ContainerForm onSubmit={(e) => { e.preventDefault() }}>
           <div>
             <label>Descrição</label>
@@ -43,7 +39,7 @@ export function Home() {
             <input type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue}></input>
           </div>
           <div>
-            <input onClick={() => { setEntrieType(true) }} type="radio" name="entrieType" value="entrada" />
+            <input onClick={() => { setEntrieType(true) }} type="radio" name="entrieType" value="entrada" defaultChecked />
             <label htmlFor="">Entrada</label>
             <input onClick={() => { setEntrieType(false) }} type="radio" name="entrieType" value="saida" />
             <label htmlFor="">Saída</label>
@@ -51,9 +47,7 @@ export function Home() {
           <button onClick={() => {
             AddEntrie(entrieDescription, entrieValue, entrieType)
             IdFromEntrie()
-          }}>
-            Enviar
-          </button>
+          }}>Enviar</button>
         </ContainerForm>
 
         <ContainerEntries>
@@ -65,18 +59,7 @@ export function Home() {
             </div>
             <span></span>
           </HeaderEntries>
-          {entries.map((item) =>
-            <CardEntrie>
-              <ItemEntrie key={item.id}>
-                <p>{item.description}</p>
-                <p>{item.value}</p>
-                {item.entrieType ? (<img src={entrie} alt="Ícone de entrada" />) : (<img src={output} alt="Ícone de saída" />)}
-              </ItemEntrie>
-              <WrapperTrash>
-                <img src={trashLight} alt="Ícone de lixeira" />
-              </WrapperTrash>
-            </CardEntrie>
-          )}
+          <EntriesCard></EntriesCard>
         </ContainerEntries>
       </ContainerMain>
     </>

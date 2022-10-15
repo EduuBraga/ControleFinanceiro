@@ -4,16 +4,18 @@ export const EntriesContext = createContext()
 
 export function EntriesProvider({ children }) {
   const [entries, setEntries] = useState([])
-  const [totalEntries, setTotalEntries] = useState(0)
   const [idEntrie, setIdEntrie] = useState(0)
 
+  const [totalEntries, setTotalEntries] = useState(0)
+  const [positiveEntries, setPositiveEntries] = useState(0)
+  const [negativeEntries, setNegativeEntries] = useState(0)
 
   function TransformInt(n) {
     return parseInt(n)
   }
 
-  function IdFromEntrie(){
-    setIdEntrie(prev=> prev + 1)
+  function IdFromEntrie() {
+    setIdEntrie(prev => prev + 1)
   }
 
   function AddEntrie(desc, value, entrieType) {
@@ -23,23 +25,31 @@ export function EntriesProvider({ children }) {
       entrieType: entrieType,
       id: idEntrie
     }
-
     setEntries([...entries, entrie])
   }
 
   useEffect(() => {
-    function getTotalValue(total, entrie) {
-      return total + entrie.value
-    }
-    const TotalProducts = entries.reduce(getTotalValue, 0)
-    setTotalEntries(TotalProducts)
-    
-    console.log(entries);
+    const AllEntriePositive = entries.filter((i) => { return i.entrieType === true })
+    const AllEntrieNegative = entries.filter((i) => { return i.entrieType === false })
 
+    const totalValuePositive = AllEntriePositive.reduce((total, entrie) => { return total + entrie.value }, 0)
+    const totalValueNegative = AllEntrieNegative.reduce((total, entrie) => { return total + entrie.value }, 0)
+
+    setPositiveEntries(totalValuePositive)
+    setNegativeEntries(totalValueNegative)
+    setTotalEntries(totalValuePositive - totalValueNegative)
   }, [entries])
 
   return (
-    <EntriesContext.Provider value={{ entries, setEntries, AddEntrie , IdFromEntrie, totalEntries}}>
+    <EntriesContext.Provider value={{
+      entries,
+      setEntries,
+      AddEntrie,
+      IdFromEntrie,
+      totalEntries,
+      positiveEntries,
+      negativeEntries
+    }}>
       {children}
     </EntriesContext.Provider>
   )

@@ -16,25 +16,6 @@ export const ContainerMain = styled.main`
   gap: 16px;
 `
 
-export const ContainerCardsControls = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-
-  div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    height: 90px;
-    color:  ${({theme})=> theme.color};
-    background-color: ${({theme})=> theme.bg2}; 
-    border-radius: 4px;
-  }
-`
-
 export const ContainerForm = styled.form`
   display: flex;
   justify-content: center;
@@ -74,7 +55,6 @@ export const ContainerForm = styled.form`
   }
 `
 
-
 export const ContainerEntries = styled.section`
   border-radius: 4px;
   padding: 12px 8px;
@@ -100,31 +80,5 @@ export const HeaderEntries = styled.header`
     align-items:center;
     gap: 25px;
     font-size: 20px;
-  }
-`
-
-export const CardEntrie = styled.main`
-  display: grid;
-  grid-template: auto / 90% auto;
-  align-items:center;
-`
-
-export const ItemEntrie = styled.div`
-  display: grid;
-  grid-template: auto / 61% 21% 18%;
-  align-items:center;
-  gap: 25px;
-
-  margin: 10px 15px ;
-  color:  ${({theme})=> theme.color};
-
-  img{
-    width: 20px;
-  }
-`
-
-export const WrapperTrash = styled.div`
-  img{
-    width: 30px;
   }
 `
