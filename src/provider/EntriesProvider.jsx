@@ -51,7 +51,7 @@ export function EntriesProvider({ children }) {
 
     setPositiveEntries(totalValuePositive)
     setNegativeEntries(totalValueNegative)
-    setTotalEntries(`${totalValuePositive < totalValueNegative ? '-' : ''} ${totalValueEntries}`)
+    setTotalEntries(`${totalValueNegative > totalValuePositive ? '-' : ''} ${totalValueEntries}`)
 
     //Pegando o maior id dentro das entries caso tenha alguma entrie na memória, para assim não haver dois ids iguais.
     if(entries.length >= 1){
