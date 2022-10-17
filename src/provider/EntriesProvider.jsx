@@ -35,6 +35,12 @@ export function EntriesProvider({ children }) {
   }
 
   useEffect(() => {
+    //Pegando itens salvos na memória
+    let entriesSalved = JSON.parse(localStorage.getItem('entries'))
+    setEntries(entriesSalved)
+  }, [])
+
+  useEffect(() => {
     const AllEntriePositive = entries.filter((i) => { return i.entrieType === true })
     const AllEntrieNegative = entries.filter((i) => { return i.entrieType === false })
 
@@ -44,6 +50,14 @@ export function EntriesProvider({ children }) {
     setPositiveEntries(totalValuePositive)
     setNegativeEntries(totalValueNegative)
     setTotalEntries(totalValuePositive - totalValueNegative)
+
+    //Pegando o maior id e pondo ele no IdEntrie, para assim contar de onde parou.
+    let ids = entries.map(item => { return item.id })
+    let largerNumber = Math.max.apply(null, ids)
+    setIdEntrie(largerNumber + 1)
+
+    //Salvando itens na memória
+    localStorage.setItem('entries', JSON.stringify(entries))
   }, [entries])
 
   return (
