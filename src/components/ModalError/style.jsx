@@ -1,6 +1,15 @@
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
+
+const AnimtionCard = keyframes`
+  0%{
+    opacity: 0;
+  }100%{
+    opacity: 1;
+  }
+`
 
 export const Container = styled.section`
+  animation: ${AnimtionCard} 350ms ease-out;
   position: fixed;
   left: 0;
   top: 0;
@@ -14,6 +23,7 @@ export const Container = styled.section`
   background-color: #00000099;
 
   div{
+    animation: ${AnimtionCard} 700ms ease-out;
     max-width: 350px;
     margin: 15px;
     padding: 12px 8px;

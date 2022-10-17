@@ -1,4 +1,12 @@
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
+
+const AnimtionCard = keyframes`
+  0%{
+    opacity: 0;
+  }100%{
+    opacity: 1;
+  }
+`
 
 export const ContainerHeader = styled.header`
   background-color: var(--color-main);
@@ -17,6 +25,7 @@ export const ContainerMain = styled.main`
 `
 
 export const ContainerForm = styled.form`
+  animation: ${AnimtionCard} 1s ease-out;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -118,6 +127,7 @@ export const ContainerEntries = styled.section`
   padding: 12px 8px;
   color:  ${({ theme }) => theme.color};
   background-color: ${({ theme }) => theme.bg2}; 
+  animation: ${AnimtionCard} 1s ease-out;
 `
 
 export const HeaderEntries = styled.header`

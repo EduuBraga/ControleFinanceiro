@@ -1,4 +1,12 @@
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
+
+const AnimtionCard = keyframes`
+  0%{
+    opacity: 0;
+  }100%{
+    opacity: 1;
+  }
+`
 
 export const Container = styled.section`
   display: flex;
@@ -8,6 +16,7 @@ export const Container = styled.section`
 `
 
 export const CardsStatistic = styled.div`
+  animation: ${AnimtionCard} 1s ease-out;
   display: flex;
   flex-direction: column;
   align-items: center;
