@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const ContainerHeader = styled.header`
   background-color: var(--color-main);
-  color:  #101010;
+  color:  #262626;
   padding: 15px 10px 45px 10px;
   text-align: center;
 `

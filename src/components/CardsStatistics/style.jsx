@@ -28,7 +28,8 @@ export const CardsStatistic = styled.div`
   }
 
   article{
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 18px;
   }
 
   img{
