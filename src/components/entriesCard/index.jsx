@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { EntriesContext } from "../../provider/EntriesProvider"
 
 import trashLight from '../../assets/icons/trash-light.png'

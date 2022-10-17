@@ -30,33 +30,37 @@ export function EntriesProvider({ children }) {
 
   function removeEntrie(id) {
     let arrayFiltered = entries.filter((entrie) => entrie.id != id)
-
     setEntries(arrayFiltered)
   }
 
   useEffect(() => {
     //Pegando itens salvos na memória
     let entriesSalved = JSON.parse(localStorage.getItem('entries'))
-    setEntries(entriesSalved)
+    if (entriesSalved) {
+      setEntries(entriesSalved)
+    }
   }, [])
 
   useEffect(() => {
-    const AllEntriePositive = entries.filter((i) => { return i.entrieType === true })
-    const AllEntrieNegative = entries.filter((i) => { return i.entrieType === false })
+    const AllEntriesPositive = entries.filter((i) => { return i.entrieType === true })
+    const AllEntriesNegative = entries.filter((i) => { return i.entrieType === false })
 
-    const totalValuePositive = AllEntriePositive.reduce((total, entrie) => { return total + entrie.value }, 0)
-    const totalValueNegative = AllEntrieNegative.reduce((total, entrie) => { return total + entrie.value }, 0)
+    const totalValuePositive = AllEntriesPositive.reduce((total, entrie) => { return total + entrie.value }, 0)
+    const totalValueNegative = AllEntriesNegative.reduce((total, entrie) => { return total + entrie.value }, 0)
 
     setPositiveEntries(totalValuePositive)
     setNegativeEntries(totalValueNegative)
     setTotalEntries(totalValuePositive - totalValueNegative)
 
-    //Pegando o maior id e pondo ele no IdEntrie, para assim contar de onde parou.
-    let ids = entries.map(item => { return item.id })
-    let largerNumber = Math.max.apply(null, ids)
-    setIdEntrie(largerNumber + 1)
-
+    //Pegando o maior id dentro das entries caso tenha alguma entrie na memória, para assim não haver dois ids iguais.
+    if(entries.length >= 1){
+      let ids = entries.map(item => { return item.id })
+      let largerNumber = Math.max.apply(null, ids)
+      setIdEntrie(largerNumber + 1)
+    }
+    
     //Salvando itens na memória
+    console.log(entries);
     localStorage.setItem('entries', JSON.stringify(entries))
   }, [entries])
 

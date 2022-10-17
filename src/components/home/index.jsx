@@ -3,16 +3,16 @@ import { EntriesContext } from "../../provider/EntriesProvider"
 
 import { EntriesCard } from "../entriesCard"
 import { CardsStatistics } from "../CardsStatistics"
+import { ModalError } from "../ModalError"
 
 import { ContainerMain, ContainerHeader, ContainerForm, ContainerEntries, HeaderEntries, InputRadio } from "./style"
-import { ModalError } from "../ModalError"
 
 export function Home() {
   const { AddEntrie, IdFromEntrie } = useContext(EntriesContext)
 
   const [entrieType, setEntrieType] = useState(null)
   const [entrieDescription, setEntrieDescription] = useState("")
-  const [entrieValue, setEntrieValue] = useState(0)
+  const [entrieValue, setEntrieValue] = useState("")
   const [visibleModal, setVisibleModal] = useState(false)
 
   const inputsRadios = document.querySelectorAll("input[name='entrieType']")
@@ -26,7 +26,7 @@ export function Home() {
     e.preventDefault()
     if (entrieDescription !== '' && entrieValue !== 0) {
       setEntrieDescription('')
-      setEntrieValue(0)
+      setEntrieValue('')
       AddEntrie(entrieDescription, entrieValue, entrieType)
       IdFromEntrie()
     } else {
@@ -46,11 +46,11 @@ export function Home() {
         <ContainerForm onSubmit={handleSubmit}>
           <div>
             <label>Descrição</label>
-            <input tabIndex="1" type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
+            <input placeholder="Ex: Alimentação" tabIndex="1" type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
           </div>
           <div>
             <label>Valor</label>
-            <input tabIndex="2" type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue} />
+            <input placeholder="Ex: 1200" tabIndex="2" type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue} />
           </div>
           <div>
             <InputRadio onClick={() => { setEntrieType(true) }} type="radio" name="entrieType" value="entrada" tabIndex="3" defaultChecked />

@@ -12,7 +12,7 @@ const AnimtionCard = keyframes`
   }
 `
 
-export const CardEntrie = styled.main`
+export const CardEntrie = styled.div`
   display: grid;
   grid-template: auto / 90% auto;
   align-items:center;
