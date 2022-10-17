@@ -45,12 +45,13 @@ export function EntriesProvider({ children }) {
     const AllEntriesPositive = entries.filter((i) => { return i.entrieType === true })
     const AllEntriesNegative = entries.filter((i) => { return i.entrieType === false })
 
-    const totalValuePositive = AllEntriesPositive.reduce((total, entrie) => { return total + entrie.value }, 0)
-    const totalValueNegative = AllEntriesNegative.reduce((total, entrie) => { return total + entrie.value }, 0)
+    const totalValuePositive = AllEntriesPositive.reduce((total, entrie) => { return total + entrie.value }, 0).toFixed(2)
+    const totalValueNegative = AllEntriesNegative.reduce((total, entrie) => { return total + entrie.value }, 0).toFixed(2)
+    const totalValueEntries =  Math.abs(totalValueNegative - totalValuePositive).toFixed(2)
 
     setPositiveEntries(totalValuePositive)
     setNegativeEntries(totalValueNegative)
-    setTotalEntries(totalValuePositive - totalValueNegative)
+    setTotalEntries(`${totalValuePositive < totalValueNegative ? '-' : ''} ${totalValueEntries}`)
 
     //Pegando o maior id dentro das entries caso tenha alguma entrie na memória, para assim não haver dois ids iguais.
     if(entries.length >= 1){
@@ -60,7 +61,6 @@ export function EntriesProvider({ children }) {
     }
     
     //Salvando itens na memória
-    console.log(entries);
     localStorage.setItem('entries', JSON.stringify(entries))
   }, [entries])
 
