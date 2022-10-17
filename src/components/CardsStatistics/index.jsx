@@ -20,7 +20,7 @@ export function CardsStatistics() {
           Entradas
           <img src={entrieLight} alt="ícone do dollar" />
         </div>
-        R$ {positiveEntries}
+        <article>R$ {positiveEntries}</article>
       </CardsStatistic>
 
       <CardsStatistic>
@@ -28,7 +28,7 @@ export function CardsStatistics() {
           Saídas
           <img src={outputLight} alt="ícone do dollar" />
         </div>
-        R$ {negativeEntries}
+        <article>R$ {negativeEntries}</article>
       </CardsStatistic>
 
       <CardsStatistic>
@@ -36,7 +36,7 @@ export function CardsStatistics() {
           Total
           <img src={dollarLight} alt="ícone do dollar" />
         </div>
-        R$ {totalEntries}
+        <article>R$ {totalEntries}</article>
       </CardsStatistic>
     </Container>
   )

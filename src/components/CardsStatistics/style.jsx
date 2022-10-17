@@ -24,10 +24,14 @@ export const CardsStatistic = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
+  }
+
+  article{
+    font-weight: 600;
   }
 
   img{
-    width: 20px;
+    width: 22px;
   }
 `

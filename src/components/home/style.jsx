@@ -74,6 +74,9 @@ export const ContainerForm = styled.form`
       background-color: #55CF70;
       color: #f1f1f1;
     }
+    &:focus{
+      outline: 2px solid white;
+    }
   }
 `
 
@@ -86,6 +89,7 @@ export const InputRadio = styled.input`
   height: 7px;
   margin-right: 4px;
   position: relative;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
