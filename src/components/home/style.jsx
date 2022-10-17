@@ -24,8 +24,8 @@ export const ContainerForm = styled.form`
 
   border-radius: 4px;
   padding: 12px 8px;
-  color:  ${({theme})=> theme.color};
-  background-color: ${({theme})=> theme.bg2}; 
+  color:  ${({ theme }) => theme.color};
+  background-color: ${({ theme }) => theme.bg2}; 
 
   input{
     background-color: #505050;
@@ -33,7 +33,7 @@ export const ContainerForm = styled.form`
     border-radius: 4px;
     padding: 0.5em 0.5em;
     box-sizing: content-box;
-    color: ${({theme})=> theme.color};
+    color: ${({ theme }) => theme.color};
 
     &:focus{
       outline: 2px solid white;
@@ -51,10 +51,10 @@ export const ContainerForm = styled.form`
     gap: 4px;
   }
   div:nth-child(3){
-    input{
-      margin-right: 5px;
-      margin-left: 5px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
   }
   label{
     font-size: 14px;
@@ -67,14 +67,53 @@ export const ContainerForm = styled.form`
     cursor: pointer;
     font-size: 16px;
     border-radius:4px;
+    font-weight: 700;
+    transition: all 0.3s ease-out;
+
+    &:hover{
+      background-color: #55CF70;
+      color: #f1f1f1;
+    }
+  }
+`
+
+export const InputRadio = styled.input`
+  appearance: none;
+  background-color:#00000000 !important;
+  border: 2px solid #505050 !important;
+  border-radius: 50% !important;
+  width: 7px ;
+  height: 7px;
+  margin-right: 4px;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before{
+    content:'';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--color-main);
+    opacity: 0;
+    transition: all 400ms ease-out;
+  }
+  &:checked::before{
+    opacity: 1;
+  }
+  &:focus{
+    outline: 2px solid white;
   }
 `
 
 export const ContainerEntries = styled.section`
   border-radius: 4px;
   padding: 12px 8px;
-  color:  ${({theme})=> theme.color};
-  background-color: ${({theme})=> theme.bg2}; 
+  color:  ${({ theme }) => theme.color};
+  background-color: ${({ theme }) => theme.bg2}; 
 `
 
 export const HeaderEntries = styled.header`
@@ -85,8 +124,8 @@ export const HeaderEntries = styled.header`
   border-bottom: 1px solid #707070;
   padding-bottom: 4px;
   margin: 10px 15px 16px 15px ;
-  color:  ${({theme})=> theme.color};
-  background-color: ${({theme})=> theme.bg2}; 
+  color:  ${({ theme }) => theme.color};
+  background-color: ${({ theme }) => theme.bg2}; 
   border-radius: 4px 4px 0px 0px;
 
   div{

@@ -12,7 +12,7 @@ import outputLight from '../../assets/icons/output-light.png'
 import { EntriesCard } from "../entriesCard"
 import { CardsStatistics } from "../CardsStatistics"
 
-import { ContainerMain, ContainerHeader, ContainerForm, ContainerEntries, HeaderEntries } from "./style"
+import { ContainerMain, ContainerHeader, ContainerForm, ContainerEntries, HeaderEntries, InputRadio } from "./style"
 import { ModalError } from "../ModalError"
 
 export function Home() {
@@ -21,7 +21,7 @@ export function Home() {
   const [entrieType, setEntrieType] = useState(null)
   const [entrieDescription, setEntrieDescription] = useState("")
   const [entrieValue, setEntrieValue] = useState(0)
-  const [visibleModal, setVisibleModal] = useState(true)
+  const [visibleModal, setVisibleModal] = useState(false)
 
   const inputsRadios = document.querySelectorAll("input[name='entrieType']")
 
@@ -54,19 +54,19 @@ export function Home() {
         <ContainerForm onSubmit={handleSubmit}>
           <div>
             <label>Descrição</label>
-            <input type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
+            <input tabIndex="1" type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
           </div>
           <div>
             <label>Valor</label>
-            <input type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue} />
+            <input tabIndex="2" type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue} />
           </div>
           <div>
-            <input onClick={() => { setEntrieType(true) }} type="radio" name="entrieType" value="entrada" defaultChecked />
-            <label htmlFor="">Entrada</label>
-            <input onClick={() => { setEntrieType(false) }} type="radio" name="entrieType" value="saida" />
-            <label htmlFor="">Saída</label>
+            <InputRadio onClick={() => { setEntrieType(true) }} type="radio" name="entrieType" value="entrada" tabIndex="3" defaultChecked />
+            <label>Entrada</label>
+            <InputRadio onClick={() => { setEntrieType(false) }} type="radio" name="entrieType" value="saida" tabIndex="4" />
+            <label>Saída</label>
           </div>
-          <button>Enviar</button>
+          <button tabIndex="5">Enviar</button>
         </ContainerForm>
 
         <ContainerEntries>
