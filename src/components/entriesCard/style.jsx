@@ -27,5 +27,10 @@ export const ItemEntrie = styled.div`
 export const WrapperTrash = styled.div`
   img{
     width: 30px;
+    cursor: pointer;
+
+    &:active{
+      transform: scale(0.95);
+    }
   }
 `
