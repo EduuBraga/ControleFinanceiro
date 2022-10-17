@@ -1,11 +1,8 @@
 import React, { useContext } from "react"
 import { EntriesContext } from "../../provider/EntriesProvider"
 
-import entriedark from '../../assets/icons/entrie-dark.png'
 import entrieLight from '../../assets/icons/entrie-light.png'
-import outputDark from '../../assets/icons/output-dark.png'
 import outputLight from '../../assets/icons/output-light.png'
-import dollarDark from '../../assets/icons/dollar-dark.png'
 import dollarLight from '../../assets/icons/dollar-light.png'
 
 import { Container, CardsStatistic } from "./style"

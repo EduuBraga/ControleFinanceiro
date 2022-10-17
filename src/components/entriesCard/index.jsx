@@ -1,14 +1,10 @@
 import React, { useContext} from "react"
 import { EntriesContext } from "../../provider/EntriesProvider"
 
-import trashDark from '../../assets/icons/trash-dark.png'
 import trashLight from '../../assets/icons/trash-light.png'
+import trashRed from '../../assets/icons/trash-red.png'
 import entrie from '../../assets/icons/entrie.png'
-import entriedark from '../../assets/icons/entrie-dark.png'
-import entrieLight from '../../assets/icons/entrie-light.png'
 import output from '../../assets/icons/output.png'
-import outputDark from '../../assets/icons/output-dark.png'
-import outputLight from '../../assets/icons/output-light.png'
 
 import { Container, CardEntrie, WrapperTrash, ItemEntrie } from "./style"
 
