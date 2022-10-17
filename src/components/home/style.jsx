@@ -52,3 +52,12 @@ export const HeaderEntries = styled.header`
     font-size: 20px;
   }
 `
+
+export const MessageNoItem = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #909090;
+`
