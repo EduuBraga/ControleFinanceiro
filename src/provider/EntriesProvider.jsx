@@ -28,6 +28,12 @@ export function EntriesProvider({ children }) {
     setEntries([...entries, entrie])
   }
 
+  function removeEntrie(id) {
+    let arrayFiltered = entries.filter((entrie) => entrie.id != id)
+
+    setEntries(arrayFiltered)
+  }
+
   useEffect(() => {
     const AllEntriePositive = entries.filter((i) => { return i.entrieType === true })
     const AllEntrieNegative = entries.filter((i) => { return i.entrieType === false })
@@ -48,7 +54,8 @@ export function EntriesProvider({ children }) {
       IdFromEntrie,
       totalEntries,
       positiveEntries,
-      negativeEntries
+      negativeEntries,
+      removeEntrie
     }}>
       {children}
     </EntriesContext.Provider>

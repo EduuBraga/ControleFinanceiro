@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { EntriesContext } from "../../provider/EntriesProvider"
 
-import trashLight from '../../assets/icons/trash-light.png'
-import entrie from '../../assets/icons/entrie.png'
-import entrieLight from '../../assets/icons/entrie-light.png'
-import output from '../../assets/icons/output.png'
-import outputLight from '../../assets/icons/output-light.png'
 import { EntriesCard } from "../entriesCard"
 import { CardsStatistics } from "../CardsStatistics"
 
@@ -34,14 +29,14 @@ export function Home() {
       setEntrieValue(0)
       AddEntrie(entrieDescription, entrieValue, entrieType)
       IdFromEntrie()
-    }else{
+    } else {
       setVisibleModal(true)
     }
   }
 
   return (
     <>
-      {visibleModal && <ModalError setVisibleModal={setVisibleModal}/>}
+      {visibleModal && <ModalError setVisibleModal={setVisibleModal} />}
       <ContainerHeader>
         <h1>Controle de Finanças</h1>
       </ContainerHeader>
