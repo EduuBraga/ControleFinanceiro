@@ -13,6 +13,7 @@ import { EntriesCard } from "../entriesCard"
 import { CardsStatistics } from "../CardsStatistics"
 
 import { ContainerMain, ContainerHeader, ContainerForm, ContainerEntries, HeaderEntries } from "./style"
+import { ModalError } from "../ModalError"
 
 export function Home() {
   const { AddEntrie, IdFromEntrie } = useContext(EntriesContext)
@@ -20,6 +21,7 @@ export function Home() {
   const [entrieType, setEntrieType] = useState(null)
   const [entrieDescription, setEntrieDescription] = useState("")
   const [entrieValue, setEntrieValue] = useState(0)
+  const [visibleModal, setVisibleModal] = useState(true)
 
   const inputsRadios = document.querySelectorAll("input[name='entrieType']")
 
@@ -28,15 +30,28 @@ export function Home() {
     inputChecked === "entrada" ? setEntrieType(true) : setEntrieType(false)
   }, [inputsRadios])
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    if (entrieDescription !== '' && entrieValue !== 0) {
+      setEntrieDescription('')
+      setEntrieValue(0)
+      AddEntrie(entrieDescription, entrieValue, entrieType)
+      IdFromEntrie()
+    }else{
+      setVisibleModal(true)
+    }
+  }
+
   return (
     <>
+      {visibleModal && <ModalError setVisibleModal={setVisibleModal}/>}
       <ContainerHeader>
         <h1>Controle de Finanças</h1>
       </ContainerHeader>
 
       <ContainerMain>
         <CardsStatistics />
-        <ContainerForm onSubmit={(e) => { e.preventDefault() }}>
+        <ContainerForm onSubmit={handleSubmit}>
           <div>
             <label>Descrição</label>
             <input type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
@@ -51,10 +66,7 @@ export function Home() {
             <input onClick={() => { setEntrieType(false) }} type="radio" name="entrieType" value="saida" />
             <label htmlFor="">Saída</label>
           </div>
-          <button onClick={() => {
-            AddEntrie(entrieDescription, entrieValue, entrieType)
-            IdFromEntrie()
-          }}>Enviar</button>
+          <button>Enviar</button>
         </ContainerForm>
 
         <ContainerEntries>
@@ -66,7 +78,8 @@ export function Home() {
             </div>
             <span></span>
           </HeaderEntries>
-          <EntriesCard></EntriesCard>
+
+          <EntriesCard />
         </ContainerEntries>
       </ContainerMain>
     </>

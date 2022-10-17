@@ -18,14 +18,27 @@ export const ContainerMain = styled.main`
 
 export const ContainerForm = styled.form`
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: space-around;
+  align-items: center;
   gap: 25px;
 
   border-radius: 4px;
   padding: 12px 8px;
   color:  ${({theme})=> theme.color};
   background-color: ${({theme})=> theme.bg2}; 
+
+  input{
+    background-color: #505050;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5em 0.5em;
+    box-sizing: content-box;
+    color: ${({theme})=> theme.color};
+
+    &:focus{
+      outline: 2px solid white;
+    }
+  }
 
   div:nth-child(1){
     display: flex;
@@ -37,9 +50,11 @@ export const ContainerForm = styled.form`
     flex-direction: column;
     gap: 4px;
   }
-  div:nth-child(3) input{
-    margin-right: 5px;
-    margin-left: 5px;
+  div:nth-child(3){
+    input{
+      margin-right: 5px;
+      margin-left: 5px;
+    }
   }
   label{
     font-size: 14px;
