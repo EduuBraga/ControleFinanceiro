@@ -35,6 +35,7 @@ export function Form({ setVisibleModal, SetMsgError }) {
         IdFromEntrie()
       }
     } else {
+      SetMsgError('Não se pode enviar entradas vazias, preencha os campos corretamente.')
       setVisibleModal(true)
     }
   }
