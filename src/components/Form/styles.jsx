@@ -14,24 +14,16 @@ export const Container = styled.form`
   justify-content: space-around;
   align-items: center;
   gap: 25px;
+  
+  @media screen and (max-width: 768px){
+    flex-direction: column;
+    gap: 12px;
+  }
 
   border-radius: 4px;
   padding: 12px 8px;
   color:  ${({ theme }) => theme.color};
   background-color: ${({ theme }) => theme.bg2}; 
-
-  input{
-    background-color: #505050;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5em 0.5em;
-    box-sizing: content-box;
-    color: ${({ theme }) => theme.color};
-
-    &:focus{
-      outline: 2px solid white;
-    }
-  }
 
   div:nth-child(1){
     display: flex;
@@ -48,6 +40,10 @@ export const Container = styled.form`
     justify-content: center;
     align-items: center;
     gap: 4px;
+    
+    label{
+      margin-right: 7px;
+    }
   }
   label{
     font-size: 14px;
@@ -78,9 +74,8 @@ export const InputRadio = styled.input`
   background-color:#00000000 !important;
   border: 2px solid #505050 !important;
   border-radius: 50% !important;
-  width: 7px ;
-  height: 7px;
-  margin-right: 4px;
+  width: 24px ;
+  height: 24px;
   position: relative;
   cursor: pointer;
 
@@ -101,6 +96,22 @@ export const InputRadio = styled.input`
   &:checked::before{
     opacity: 1;
   }
+  &:focus{
+    outline: 2px solid white;
+  }
+`
+
+export const InputText = styled.input`
+  background-color: #505050;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em;
+  color: ${({ theme }) => theme.color};
+
+  @media screen and (max-width: 768px){
+    width: 80vw;
+  }
+
   &:focus{
     outline: 2px solid white;
   }

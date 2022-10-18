@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { EntriesContext } from "../../provider/EntriesProvider"
 
-import { Container, InputRadio } from "./styles"
+import { Container, InputRadio, InputText } from "./styles"
 
 export function Form({ setVisibleModal, SetMsgError }) {
   const { AddEntrie, IdFromEntrie } = useContext(EntriesContext)
@@ -20,11 +20,15 @@ export function Form({ setVisibleModal, SetMsgError }) {
   function handleSubmit(e) {
     e.preventDefault()
     if (entrieDescription !== '' && entrieValue !== '') {
-      if (entrieValue <= 0) {
+      if (entrieValue < 0) {
         SetMsgError('sua entrada não pode ser negativa')
         setVisibleModal(true)
         setEntrieValue('')
-      } else {
+      } else if(entrieValue == 0){
+        SetMsgError('sua entrada não pode ser igual a zero')
+        setVisibleModal(true)
+        setEntrieValue('')
+      }else {
         setEntrieDescription('')
         setEntrieValue('')
         AddEntrie(entrieDescription, entrieValue, entrieType)
@@ -39,11 +43,11 @@ export function Form({ setVisibleModal, SetMsgError }) {
     <Container onSubmit={handleSubmit}>
       <div>
         <label>Descrição</label>
-        <input placeholder="Ex: Alimentação" tabIndex="1" type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
+        <InputText placeholder="Ex: Alimentação" tabIndex="1" type="text" name="description" onChange={(e) => { setEntrieDescription(e.target.value) }} value={entrieDescription} />
       </div>
       <div>
         <label>Valor</label>
-        <input placeholder="Ex: 1200" tabIndex="2" type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue} />
+        <InputText placeholder="Ex: 1200" tabIndex="2" type="number" name="value" onChange={(e) => { setEntrieValue(e.target.value) }} value={entrieValue} />
       </div>
       <div>
         <InputRadio onClick={() => { setEntrieType(true) }} type="radio" name="entrieType" value="entrada" tabIndex="3" defaultChecked />
