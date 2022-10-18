@@ -46,6 +46,10 @@ export const HeaderEntries = styled.header`
   background-color: ${({ theme }) => theme.bg2}; 
   border-radius: 4px 4px 0px 0px;
 
+  @media screen and (max-width: 768px){
+    grid-template: auto / 80% auto;
+  }
+
   div{
     display: grid;
     grid-template: auto / 60% 20% 20%;

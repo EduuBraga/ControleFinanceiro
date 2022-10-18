@@ -17,6 +17,14 @@ export const CardEntrie = styled.div`
   grid-template: auto / 90% auto;
   align-items:center;
   animation: ${AnimtionCard} 1s ease-out;
+
+  @media screen and (max-width: 768px){
+    grid-template: auto / 90% auto;
+  }
+
+  @media screen and (max-width: 490px){
+    grid-template: auto / 80% auto;
+  }
 `
 
 export const ItemEntrie = styled.div`
@@ -35,6 +43,12 @@ export const ItemEntrie = styled.div`
 
 export const WrapperTrash = styled.div`
   position: relative;
+  @media screen and (max-width: 768px){
+    margin-left: 10px;
+  }
+  @media screen and (max-width: 490px){
+    margin-left: 25px;
+  }
 
   img:nth-child(1){
     width: 30px;
