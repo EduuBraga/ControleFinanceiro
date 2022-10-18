@@ -2,7 +2,7 @@ import React from "react"
 
 import { Container } from "./style"
 
-export function ModalError({ setVisibleModal }) {
+export function ModalError({ setVisibleModal, msgError}) {
   const inputDescription = document.querySelector('input[name="description"]')
   const inputValue = document.querySelector('input[name="value"]')
 
@@ -18,7 +18,7 @@ export function ModalError({ setVisibleModal }) {
     <Container>
       <div>
         <h3>Error:</h3>
-        <p>Não se pode enviar entradas vazias, preencha os campos corretamente.</p>
+        <p>{msgError}</p>
         <button onClick={handleClick}>Fechar Modal</button>
       </div>
     </Container>

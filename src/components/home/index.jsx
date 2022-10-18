@@ -12,17 +12,18 @@ export function Home() {
   const { entries } = useContext(EntriesContext)
 
   const [visibleModal, setVisibleModal] = useState(false)
+  const [msgError, SetMsgError] = useState('Não se pode enviar entradas vazias, preencha os campos corretamente.')
 
   return (
     <>
-      {visibleModal && <ModalError setVisibleModal={setVisibleModal} />}
+      {visibleModal && <ModalError msgError={msgError} setVisibleModal={setVisibleModal} />}
       <ContainerHeader>
         <h1>Controle de Finanças</h1>
       </ContainerHeader>
 
       <ContainerMain>
         <CardsStatistics />
-        <Form setVisibleModal={setVisibleModal} />
+        <Form setVisibleModal={setVisibleModal} SetMsgError={SetMsgError}/>
 
         <ContainerEntries>
           <HeaderEntries>

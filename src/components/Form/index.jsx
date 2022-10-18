@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { EntriesContext } from "../../provider/EntriesProvider"
 
 import { Container, InputRadio } from "./styles"
 
-export function Form({setVisibleModal}) {
+export function Form({ setVisibleModal, SetMsgError }) {
   const { AddEntrie, IdFromEntrie } = useContext(EntriesContext)
 
   const [entrieType, setEntrieType] = useState(null)
@@ -19,11 +19,17 @@ export function Form({setVisibleModal}) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    if (entrieDescription !== '' && entrieValue !== 0) {
-      setEntrieDescription('')
-      setEntrieValue('')
-      AddEntrie(entrieDescription, entrieValue, entrieType)
-      IdFromEntrie()
+    if (entrieDescription !== '' && entrieValue !== '') {
+      if (entrieValue <= 0) {
+        SetMsgError('sua entrada não pode ser negativa')
+        setVisibleModal(true)
+        setEntrieValue('')
+      } else {
+        setEntrieDescription('')
+        setEntrieValue('')
+        AddEntrie(entrieDescription, entrieValue, entrieType)
+        IdFromEntrie()
+      }
     } else {
       setVisibleModal(true)
     }
