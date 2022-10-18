@@ -1,7 +1,7 @@
 # Controle de Finanças
 
 <p align="center">
-  🚧 Controle de Finanças | Em desenvolvimento 👨‍💻 🚧
+  🚧 Controle de Finanças | Concluído 🚀 🚧
 </p>
 
 ## 💻 Sobre o Projeto
