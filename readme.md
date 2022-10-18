@@ -13,7 +13,7 @@
 - Função para adicionar uma nova entrada
 - Opção de escolha do tipo de entrada (Se é entrada ou saída).
 - Opção de removação de uma entrada da lista
-- Visão atualizada do totol de entradas, saídas e total restante. 
+- Visão atualizada do total de entradas, saídas e total restante. 
 - Suas entradas salvas para sempre no seu navegador.
 
 ## 🎨 View
