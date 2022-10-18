@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 const AnimtionCard = keyframes`
   0%{
@@ -9,6 +9,17 @@ const AnimtionCard = keyframes`
 `
 
 export const Container = styled.section`
+  display: grid;
+  grid-template: auto / 4fr 2fr;
+  gap: 30px;
+
+  @media screen and (max-width: 768px){
+    grid-template: auto auto / auto ;
+    gap: 30px;
+  }
+`
+
+export const ContainerCardTop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,9 +36,13 @@ export const CardsStatistic = styled.div`
 
   width: 100%;
   height: 90px;
-  color:  ${({theme})=> theme.color};
-  background-color: ${({theme})=> theme.bg2}; 
+  color:  ${({ theme }) => theme.color};
+  background-color: ${({ theme }) => theme.bg2}; 
   border-radius: 4px;
+
+  @media screen and (max-width: 768px){
+    
+  }
 
   div{
     display: flex;

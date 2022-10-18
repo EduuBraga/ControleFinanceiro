@@ -22,6 +22,8 @@ export const ContainerMain = styled.main`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-right: 10px;
+  padding-left: 10px;
 `
 
 export const ContainerEntries = styled.section`

@@ -5,28 +5,29 @@ import entrieLight from '../../assets/icons/entrie-light.png'
 import outputLight from '../../assets/icons/output-light.png'
 import dollarLight from '../../assets/icons/dollar-light.png'
 
-import { Container, CardsStatistic } from "./style"
+import { Container, CardsStatistic, ContainerCardTop } from "./style"
 
 export function CardsStatistics() {
   const { totalEntries, positiveEntries, negativeEntries } = useContext(EntriesContext)
 
   return (
     <Container>
-      <CardsStatistic>
-        <div>
-          Entradas
-          <img src={entrieLight} alt="ícone do dollar" />
-        </div>
-        <article>R$ {positiveEntries}</article>
-      </CardsStatistic>
-
-      <CardsStatistic>
-        <div>
-          Saídas
-          <img src={outputLight} alt="ícone do dollar" />
-        </div>
-        <article>R$ {negativeEntries}</article>
-      </CardsStatistic>
+      <ContainerCardTop>
+        <CardsStatistic>
+          <div>
+            Entradas
+            <img src={entrieLight} alt="ícone do dollar" />
+          </div>
+          <article>R$ {positiveEntries}</article>
+        </CardsStatistic>
+        <CardsStatistic>
+          <div>
+            Saídas
+            <img src={outputLight} alt="ícone do dollar" />
+          </div>
+          <article>R$ {negativeEntries}</article>
+        </CardsStatistic>
+      </ContainerCardTop>
 
       <CardsStatistic>
         <div>
